@@ -44,8 +44,9 @@ Not translated: buttons, the 1.50 hot key scripts and the Mirror mod message.
 
 ## Requirements
 
-- Master of Orion II (GOG or Steam) with patch **1.50.26** — the game folder
-  must contain `ORION150.EXE` and a `150` folder;
+- Master of Orion II (GOG or Steam) with patch **1.50.26**
+  ([moo2mod.com](https://moo2mod.com/)) — the game folder must contain
+  `ORION150.EXE` and a `150` folder;
 - Windows.
 
 ## Installation
@@ -84,7 +85,8 @@ From source: `python make.py install` (Python 3.8+, standard library only).
   tooling, engine research and patches.
 
 Thanks to the authors of the unofficial **1.50** patch and the
-**1.50 improved** mod, and to Simtex and MicroProse for the game.
+**1.50 improved** mod ([moo2mod.com](https://moo2mod.com/)), and to Simtex
+and MicroProse for the game.
 
 ## License
 

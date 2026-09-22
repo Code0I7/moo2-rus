@@ -43,8 +43,9 @@
 
 ## Требования
 
-- Master of Orion II (GOG или Steam) с патчем **1.50.26** — в папке игры
-  должны быть `ORION150.EXE` и папка `150`
+- Master of Orion II (GOG или Steam) с патчем **1.50.26**
+  ([moo2mod.com](https://moo2mod.com/)) — в папке игры должны быть
+  `ORION150.EXE` и папка `150`
 - Windows
 
 ## Установка
@@ -80,8 +81,8 @@
 - **[Claude Code](https://claude.com/claude-code)** (Anthropic) — перевод,
   инструменты, исследование и правки движка.
 
-Спасибо авторам неофициального патча **1.50** и мода **1.50 improved**, а
-также Simtex и MicroProse — за игру.
+Спасибо авторам неофициального патча **1.50** и мода **1.50 improved**
+([moo2mod.com](https://moo2mod.com/)), а также Simtex и MicroProse — за игру.
 
 ## Лицензия
 

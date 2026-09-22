@@ -1,0 +1,5 @@
+blank_issues_enabled: true
+contact_links:
+  - name: Проблема с установкой патча 1.50 или самой игры
+    url: https://github.com/Code0I7/moo2-rus#требования
+    about: Перевод требует патч 1.50.26 — проверьте раздел «Требования» в README

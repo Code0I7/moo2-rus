@@ -1,0 +1,41 @@
+# Quick checks that need no game files: the tools compile and every
+# translation line is valid JSON with an id and a string.
+name: Check
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Compile tools
+        run: python -m compileall -q make.py tools
+
+      - name: Validate tr/*.jsonl
+        run: |
+          python - <<'EOF'
+          import glob, json, sys
+          bad = 0
+          for p in sorted(glob.glob('tr/*.jsonl')):
+              for n, line in enumerate(open(p, encoding='utf-8'), 1):
+                  s = line.strip()
+                  if not s or s.startswith('//'):
+                      continue
+                  try:
+                      k, v = json.loads(s, strict=False)
+                      assert isinstance(k, str) and isinstance(v, str)
+                  except Exception as e:
+                      print('%s:%d: %s' % (p, n, e))
+                      bad += 1
+          print('bad lines:', bad)
+          sys.exit(1 if bad else 0)
+          EOF

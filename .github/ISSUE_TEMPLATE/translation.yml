@@ -1,0 +1,30 @@
+name: Предложение по переводу
+description: Неточный перевод, другое слово для термина, опечатка
+title: "[Перевод] "
+labels: ["перевод"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Термины в игре должны называться одинаково везде (список сокращений —
+        docs/ABBREVIATIONS.md). Если предлагаете другое слово для термина,
+        напишите, где ещё оно встречается.
+  - type: input
+    id: current
+    attributes:
+      label: Как сейчас
+      placeholder: "Грузовозы"
+    validations:
+      required: true
+  - type: input
+    id: proposed
+    attributes:
+      label: Как лучше
+      placeholder: "Транспорты"
+    validations:
+      required: true
+  - type: textarea
+    id: where
+    attributes:
+      label: Где встречается и почему
+      description: Экран, английский оригинал, если знаете; скриншот приветствуется

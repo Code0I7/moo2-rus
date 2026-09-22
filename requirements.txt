@@ -1,0 +1,5 @@
+# The install itself (python make.py install) needs only the standard library.
+# Optional, for font previews, screenshots and test automation:
+Pillow>=9
+# Optional, for poking at ORION150.EXE (tools/syms.py):
+capstone>=5

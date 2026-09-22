@@ -1,0 +1,29 @@
+# Local only - produced by make.py from the user's own game files.
+# (git has no trailing comments, so every note sits on its own line)
+
+# pristine copies of the game files that install.py replaces
+backup/
+# English text extracted from the game (copyrighted, regenerated on install)
+text/
+# scratch: screenshots, experiments, one-off scripts
+work/
+
+# never commit game files, whatever folder they end up in
+*.LBX
+*.lbx
+*.EXE
+*.exe
+*.GAM
+*.orig
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+
+# editors / OS
+.vscode/
+.idea/
+Thumbs.db
+desktop.ini
+.DS_Store

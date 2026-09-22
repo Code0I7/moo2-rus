@@ -1,0 +1,57 @@
+name: Ошибка в тексте
+description: Текст не помещается, обрезан, наезжает на рамку, пропало слово, кракозябры
+title: "[Текст] "
+labels: ["текст"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Спасибо! Главное — **скриншот**: по нему видно и экран, и проблему.
+        Скриншот DOSBox: Ctrl+F5 (файл появится в папке `capture` DOSBox),
+        или обычный снимок экрана Windows (Win+Shift+S).
+  - type: dropdown
+    id: screen
+    attributes:
+      label: Экран
+      options:
+        - Главная карта
+        - Колонии / экран колонии / постройки
+        - Планеты
+        - Флоты / корабли
+        - Лидеры
+        - Расы / дипломатия
+        - Инфо (обзор технологий, справочник, статистика)
+        - Исследования
+        - Проектирование кораблей
+        - Бой
+        - События, новости, Совет
+        - Создание расы / новая игра
+        - Справка по правому щелчку
+        - Другое
+    validations:
+      required: true
+  - type: textarea
+    id: screenshot
+    attributes:
+      label: Скриншот
+      description: Перетащите картинку сюда
+    validations:
+      required: true
+  - type: textarea
+    id: what
+    attributes:
+      label: Что не так
+      placeholder: "Например: вторая строка названия наезжает на следующий пункт списка"
+  - type: dropdown
+    id: mod
+    attributes:
+      label: Основной мод в Лаунчере
+      options:
+        - 1.50 improved
+        - 1.50 (классический)
+        - другой
+  - type: input
+    id: version
+    attributes:
+      label: Версия перевода
+      placeholder: "например v0.9.0 или дата скачивания"

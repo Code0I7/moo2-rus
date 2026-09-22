@@ -132,6 +132,12 @@ symbol table the 1.50 patch left in the EXE (`tools/syms.py`).
 - `install.py` replaces files in the game folder, so `dump_all.py` and
   `build.py` read the originals from `backup/root/`, never the installed
   Russian copy; `verify.py` catches this class of bug.
+- A save stores the resolved LBX paths of its config
+  (`\150\mods\RUS\lbx\HELP.LBX` …) and will not load if a file is missing
+  ("… could not be found", the game terminates). So `uninstall` keeps
+  `150/mods/rus/lbx` filled with the original English files (plus a
+  `README.TXT`) and removes `RUS.CFG`: the mod disappears from the Launcher
+  and old saves open in English.
 - The Launcher does not decode `mod_name`/`mod_desc` (it shows raw bytes), so
   they are ASCII; everything the game prints lives in `cfg/EXTRA.CFG` in
   CP1251, one folder down (the Launcher treats any `*.CFG` in a mod folder as

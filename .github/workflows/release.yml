@@ -4,7 +4,9 @@
 #   Actions -> Release -> Run workflow                   -> zip as a build artifact only
 #
 # The zip holds moo2-rus.exe (make.py packed by PyInstaller), tr/ and cfg/ -
-# no game files.  The exe builds the translation from the user's own copy.name: Release
+# no game files.  The exe builds the translation from the user's own copy.
+
+name: Release
 
 on:
   push:

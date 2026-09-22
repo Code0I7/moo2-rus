@@ -114,8 +114,26 @@ def install():
         n += 1
         print('  root <- %s' % name)
     size = gen_cfg()
+    note = os.path.join(MOD, 'README.TXT')     # left behind by uninstall
+    if os.path.exists(note):
+        os.remove(note)
     enable(True)
     print('RUS.CFG written (%d bytes), %d root files replaced, mod enabled.' % (size, n))
+
+
+LEFTOVER_NOTE = """Master of Orion II - Russian translation (moo2-rus), uninstalled.
+
+The files in lbx\\ are the ORIGINAL English ones.  They stay because a saved
+game remembers the exact LBX paths of the mods it was started with (for
+example \\150\\mods\\RUS\\lbx\\HELP.LBX) and the game refuses to load the save
+if one of them is missing.  With these copies such saves open in English.
+It is safe to delete this folder once you no longer need those saves.
+
+Перевод удалён. В lbx\\ лежат ОРИГИНАЛЬНЫЕ английские файлы: сохранения,
+начатые с переводом, помнят пути к файлам мода и без них не загружаются.
+С этими копиями такие сохранения открываются на английском. Папку можно
+удалить, когда эти сохранения больше не нужны.
+"""
 
 
 def uninstall():
@@ -126,7 +144,35 @@ def uninstall():
             shutil.copyfile(bak, os.path.join(ROOT, name))
             n += 1
     enable(False)
-    print('restored %d root files, mod disabled.' % n)
+    # A save stores the resolved LBX paths of its config, so games started
+    # with the translation look for \150\mods\RUS\lbx\*.LBX when loaded and the
+    # game terminates if one is missing ("... could not be found").  Keep the
+    # folder, but put the original English files in it: those saves then load
+    # in English, consistent with the restored EXE.  RUS.CFG goes, so the
+    # Launcher no longer lists the mod.
+    import dump_all
+    kept = 0
+    for name in PARAM:
+        dst = os.path.join(MODLBX, name)
+        if os.path.exists(dst):
+            src = dump_all.source_for(name)
+            if src and os.path.abspath(src) != os.path.abspath(dst):
+                shutil.copyfile(src, dst)
+                kept += 1
+    for name in ROOT_REPLACE:
+        p = os.path.join(MODLBX, name)
+        if os.path.exists(p):
+            os.remove(p)
+    for p in (os.path.join(MOD, 'RUS.CFG'), os.path.join(MOD, 'cfg', 'EXTRA.CFG')):
+        if os.path.exists(p):
+            os.remove(p)
+    if os.path.isdir(os.path.join(MOD, 'cfg')) and not os.listdir(os.path.join(MOD, 'cfg')):
+        os.rmdir(os.path.join(MOD, 'cfg'))
+    if os.path.isdir(MODLBX):
+        with open(os.path.join(MOD, 'README.TXT'), 'w', encoding='utf-8') as f:
+            f.write(LEFTOVER_NOTE)
+    print('restored %d root files, mod disabled; %d original LBX left in 150/mods/rus/lbx '
+          'for saves started with the translation.' % (n, kept))
 
 
 if __name__ == '__main__':

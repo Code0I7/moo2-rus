@@ -61,6 +61,10 @@ needs it. If Windows warns about an unknown publisher: "More info" → "Run
 anyway".
 
 **Uninstall:** run `moo2-rus.exe` and choose **2 — uninstall**.
+Saved games remember that they were started with the translation: after
+uninstalling they open in English, but their star and colony names stay
+Russian and will not be displayed. Continue such games with the translation
+installed.
 
 ## Developers
 
